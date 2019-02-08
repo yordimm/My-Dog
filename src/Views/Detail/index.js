@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/NavBar';
-import DogCard from '../../components/DogCard';
-import PropTypes from 'prop-types';
+import DogCarousel from '../../components/DogCarousel';
+import DogDescription from '../../components/DogDescription';
 import { connect } from 'react-redux';
 import { ActionCreators } from "../../redux/actions/types";
 import { bindActionCreators } from 'redux';
@@ -22,17 +21,25 @@ class Detail extends Component {
     }
 
     componentDidMount() {
+        console.log(this.state.dogs)
         let dog = this.getDog(this.state.id)
         this.setState({ dog })
     }
 
     render() {
+        console.log(this.state.dog)
         return (
             <div className="container">
-                <NavBar home={'Home'} todos={'todos'} />
-                <p>{'Detalle'}</p>
-                {this.state.dog &&
-                    <DogCard name={this.state.dog.breed} image={this.state.dog.images[0]} />}
+                <div>
+                    {this.state.dog &&
+                        <div>
+                            <DogCarousel images={this.state.dog.images} />
+                            <DogDescription
+                                description={this.state.dog.description}
+                                name={this.state.dog.breed} />
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

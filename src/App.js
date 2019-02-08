@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from 'react-redux';
+import Welcome from './Views/Welcome';
 import Home from './Views/Home';
 import Todos from './Views/Todos';
 import Detail from './Views/Detail';
+import NavBar from './components/NavBar';
+import { navbarRoutes } from './services'
 
 class App extends Component {
 
@@ -20,9 +23,14 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Route exact path="/" component={Home} />
-            <Route path="/todos" component={Todos} />
-            <Route path="/detail/:id" component={Detail} />
+            <NavBar routes={navbarRoutes} />
+            <Switch>
+              <Route exact path="/" component={Welcome} />
+              <Route path="/home" component={Home} location="hash" />
+              <Route path="/todos" component={Todos} location="hash" />
+              <Route path="/detail/:id" component={Detail} location="hash" />
+              <Route component={Home} />
+            </Switch>
           </div>
         </Router>
       </Provider>

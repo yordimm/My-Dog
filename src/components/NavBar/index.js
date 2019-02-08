@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ home, todos }) => {
+const NavBar = ({ routes }) => {
     return (
-        <nav className="navbar navbar-light bg-light navbar-expand-md fixed-top">
+        <nav className="navbar navbar-light bg-light navbar-expand-md mb-5">
             <div className="container">
                 <button type="button" className="navbar-toggler" data-toggle="collapse"
                     data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false"
@@ -14,12 +14,10 @@ const NavBar = ({ home, todos }) => {
 
                 <div className="collapse navbar-collapse font-weight-bold" id="menu-principal">
                     <ul className="navbar-nav">
-                        <Link to="/">
-                            <li className="nav-item"><a href="#" className="nav-link active">{home}</a></li>
-                        </Link>
-                        <Link to="/todos">
-                        <li className="nav-item"><a href="#" className="nav-link">{todos}</a></li>
-                        </Link>
+                        {routes.map((route, index) =>
+                            <Link to={route.link} key={index}>
+                                <li className="nav-item"><a href="#" className="nav-link">{route.name}</a></li>
+                            </Link>)}
                     </ul>
                 </div>
             </div>
@@ -28,7 +26,6 @@ const NavBar = ({ home, todos }) => {
 }
 
 NavBar.propTypes = {
-    home: PropTypes.string,
-    todos: PropTypes.string
+    routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 export default NavBar;
