@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/NavBar';
 import DogCard from '../../components/DogCard';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -24,17 +23,21 @@ class Home extends Component {
     render() {
         return (
             <div className="container">
-                <NavBar home={'Home'} todos={'todos'} />
-                <div className="row">
-                    <div className="col-3">
-
-                        {this.state.initialImages
-                            && this.state.initialImages.map(image => <DogCard image={image} />)}
+                <div className="row justify-content-between">
+                    <div className="col-4 justify-content-end">
+                        <h2>{'My Dog'}</h2>
+                        <p>{'Encuentra Tu Compañero Ideal!'}</p>
+                        <Link to={`/todos`}>
+                            <button type="button" className="btn btn-outline-primary">{'Ver más Perritos'}</button>
+                        </Link>
+                    </div>
+                    <div className="col-8">
+                        <div className="row">
+                            {this.state.initialImages
+                                && this.state.initialImages.map((image, index) => <DogCard image={image} key={index} />)}
+                        </div>
                     </div>
                 </div>
-                <Link to={`/todos`} hola={'hola'}>
-                    <p>Todos los Perros </p>
-                </Link>
             </div>
         );
     }

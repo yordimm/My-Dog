@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from '../../components/NavBar';
 import DogCard from '../../components/DogCard';
 import { connect } from 'react-redux';
 import { ActionCreators } from "../../redux/actions/types";
 import { bindActionCreators } from 'redux';
 import { Services } from '../../services';
+import './styles.css';
 
+const { findBreedImages, findDogs, getDescription } = Services;
 class Todos extends Component {
     constructor(props) {
         super(props)
@@ -17,24 +18,32 @@ class Todos extends Component {
     }
 
     async componentDidMount() {
-          await this.getDogs();
+        await this.getDogs();
     }
 
-   getDogs = async () => {
+    getDogs = async () => {
         if (this.props.dogs.dogsInfo.length < 1) {
-            const data = await Services.findDogs();
+            const data = await findDogs();
             const { dogs, error } = data;
             if (error) {
                 this.setState({ error })
                 await this.props.getDogsInfo([], true)
             }
             Object.keys(dogs).map(async dog => {
-                const dogImages = await Services.findBreedImages(dog, 3)
+                const dogImages = await findBreedImages(dog, 3)
                 const { images, error } = dogImages
                 if (error) {
                     this.setState({ error })
                 }
-                this.setState({ dogs: [...this.state.dogs, { breed: dog, images }] })
+                this.setState(
+                    {
+                        dogs: [...this.state.dogs,
+                        {
+                            breed: dog,
+                            images,
+                            description: getDescription(dog)
+                        }]
+                    })
                 await this.props.getDogsInfo(this.state.dogs, false)
             })
         } else {
@@ -45,13 +54,13 @@ class Todos extends Component {
 
     render() {
         return (
-            <div className="container">
-                <NavBar home={'Home'} todos={'todos'} />
-                <p>{'Todos'}</p>
-                {this.state.dogs.map((dog, index) =>
-                    <Link to={`/detail/${index}`}>
-                        <DogCard name={dog.breed} image={dog.images[0]} />
-                    </Link>)}
+            <div className="container infinite-scroll">
+                <div className="row">
+                    {this.state.dogs.map((dog, index) =>
+                        <Link key={index} to={`/detail/${index}`}>
+                            <DogCard name={dog.breed} image={dog.images[0]} />
+                        </Link>)}
+                </div>
             </div>
         );
     }

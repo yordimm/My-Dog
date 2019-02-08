@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const apiUrl = 'https://dog.ceo/api';
+const apiUrl = 'https://dog.ceo/api';
 
 export const Services = {
     findDogs: async () => {
@@ -47,6 +47,26 @@ export const Services = {
                 images: []
             }
         }
+    },
+    getDescription: (name) => {
+        const description = `${name} ${lorem}`
+        return description;
     }
 
 }
+
+export const navbarRoutes = [
+    {
+        name: 'Home',
+        link: '/home'
+    },
+    {
+        name: 'Todos',
+        link: '/todos'
+    }]
+
+const lorem = `is simply dummy text of the printing and typesetting industry. 
+               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+               when an unknown printer took a galley of type and scrambled it to make a type
+               specimen book.It has survived not only five centuries, but also the leap into
+               electronic typesetting, remaining essentially unchanged.`;
