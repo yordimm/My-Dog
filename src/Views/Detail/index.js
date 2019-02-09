@@ -21,13 +21,11 @@ class Detail extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.dogs)
         let dog = this.getDog(this.state.id)
         this.setState({ dog })
     }
 
     render() {
-        console.log(this.state.dog)
         return (
             <div className="container">
                 <div>
