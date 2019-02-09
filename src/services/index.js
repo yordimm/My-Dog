@@ -6,8 +6,9 @@ export const Services = {
     findDogs: async () => {
         try {
             const { data } = await axios.create().get(`${apiUrl}/breeds/list/all`)
+            const { message, status } = data;
             return {
-                dogs: data.message,
+                dogs: Object.keys(message),
                 error: false
             }
         } catch (error) {
@@ -64,6 +65,8 @@ export const navbarRoutes = [
         name: 'Todos',
         link: '/todos'
     }]
+
+export const defaultImage = 'https://buscomascota.cl/assets/user_default-6da53fc756af1e32234642a496a22cb413205ba49df744cfff0b0505615dd132.png';
 
 const lorem = `is simply dummy text of the printing and typesetting industry. 
                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
