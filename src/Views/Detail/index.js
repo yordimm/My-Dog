@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DogCarousel from '../../components/DogCarousel';
 import DogDescription from '../../components/DogDescription';
+import LinkButton from '../../components/LinkButton';
 import { connect } from 'react-redux';
 import { ActionCreators } from "../../redux/actions/types";
 import { bindActionCreators } from 'redux';
@@ -28,14 +29,16 @@ class Detail extends Component {
     render() {
         return (
             <div className="container">
-                    {this.state.dog &&
-                        <div className="row"> 
-                            <DogCarousel images={this.state.dog.images} />
-                            <DogDescription
-                                description={this.state.dog.description}
-                                name={this.state.dog.breed} />
-                        </div>
-                    }
+                {this.state.dog &&
+                    <div className="row">
+                        <DogCarousel images={this.state.dog.images} />
+                        <DogDescription
+                            description={this.state.dog.description}
+                            name={this.state.dog.breed} >
+                            <LinkButton link={'/todos'} content={'Ver Más Perros'} />
+                        </DogDescription>
+                    </div>
+                }
             </div>
         );
     }

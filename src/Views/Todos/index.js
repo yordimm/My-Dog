@@ -40,6 +40,7 @@ class Todos extends Component {
         this.setState({ finalPos: limit })
         if (!dogsInfo[limit]) {
             this.setState({ next: false })
+            this.props.stopScroll()
         }
         setTimeout(() => {
             this.getDogsImages(dogsInfoStrech)
@@ -48,7 +49,7 @@ class Todos extends Component {
 
     getDogs = async () => {
         const firstStrech = 20;
-        if (this.props.dogs.dogsInfo.length < 1) {
+        if (this.props.dogs.next) {
             const data = await findDogs();
             const { dogs, error } = data;
             if (error) {

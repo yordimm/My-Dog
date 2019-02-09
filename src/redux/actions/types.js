@@ -7,6 +7,8 @@ export const GET_DOGS_FAIL = 'GET_DOGS_FAIL'
 export const GET_DOG_IMAGES = 'GET_DOG_IMAGES'
 export const GET_DOG_IMAGES_FAIL = 'GET_DOG_IMAGES_FAIL'
 
+export const NEXT = 'NEXT'
+
 
 
 export const ActionCreators = Object.assign({},

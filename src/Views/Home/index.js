@@ -2,6 +2,7 @@ import React, { Component, Suspense, lazy } from 'react';
 import DefaultImage from '../../components/DefaultImage';
 import DogLoader from '../../components/DogLoader';
 import DogDescription from '../../components/DogDescription';
+import LinkButton from '../../components/LinkButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ActionCreators } from "../../redux/actions/types";
@@ -39,9 +40,7 @@ class Home extends Component {
                 {!this.state.error ?
                     <div className="row">
                         <DogDescription name={'My Dog'} description={'¿Qué esperas para encontrar a tu compañero ideal?'}>
-                            <Link to={`/todos`}>
-                                <button type="button" className="btn btn-primary">{'Ver Perritos'}</button>
-                            </Link>
+                            <LinkButton link={'/todos'} content={'Ver Perritos'} />
                         </DogDescription>
                         <div className="col-sm-12 col-lg-8">
                             <div className="d-md-flex ">

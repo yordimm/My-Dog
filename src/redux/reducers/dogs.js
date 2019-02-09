@@ -1,8 +1,8 @@
 import createReducer from '../createReducer';
-import { GET_DOGS, GET_DOGS_FAIL } from '../actions/types';
+import { GET_DOGS, GET_DOGS_FAIL, NEXT } from '../actions/types';
 
 
-export const dogsState = createReducer({ lastUpdated: null, dogsInfo: [] }, {
+export const dogsState = createReducer({ lastUpdated: null, dogsInfo: [], next : true }, {
     [GET_DOGS](state, action) {
         return { ...state, dogsInfo: action.dogs, errorDogs: action.error, lastUpdated: Date.now() };
     },
@@ -13,4 +13,10 @@ export const dogsState = createReducer({ lastUpdated: null, dogsInfo: [] }, {
 
         };
     },
+    [NEXT](state) {
+        return {
+            ...state,
+            next: false
+        }
+    }
 })
