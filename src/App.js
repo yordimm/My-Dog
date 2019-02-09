@@ -25,7 +25,7 @@ class App extends Component {
             <NavBar routes={navbarRoutes} />
             <div className="container">
               <Switch>
-                <Route path="/home" component={Home} location="hash" />
+                <Route exact path="/" component={Home} location="hash" />
                 <Route path="/todos" component={Todos} location="hash" />
                 <Route path="/detail/:id" component={Detail} location="hash" />
                 <Route component={Home} />
