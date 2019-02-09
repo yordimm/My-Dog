@@ -30,3 +30,73 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+	color: #44484a !important;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.btn-primary {
+  background-color: #FF5912 !important;
+  border-color: #FF5912 !important;
+}
+
+.text-primary {
+	color:  #FF5912 !important;
+}
+
+.dogImage {
+  width: 300px;
+  height: 300px;
+  border-radius: 5%
+}
+
+.dogDetail {
+  width: 630px;
+  height: 300px;
+}
+ h5{
+  color : #986d57;
+  font-weight: bold;
+  margin: 5px;
+ }
+
+ h4 {
+   color : #986d57
+ }
+
+
+ .animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@media (max-width: 600px) {
+  .dogDetail {
+    width: 300px;
+    height: 300px;
+  }
+}

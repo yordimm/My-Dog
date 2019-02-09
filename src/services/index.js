@@ -66,8 +66,6 @@ export const navbarRoutes = [
         link: '/todos'
     }]
 
-export const defaultImage = 'https://buscomascota.cl/assets/user_default-6da53fc756af1e32234642a496a22cb413205ba49df744cfff0b0505615dd132.png';
-
 const lorem = `is simply dummy text of the printing and typesetting industry. 
                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                when an unknown printer took a galley of type and scrambled it to make a type

@@ -28,16 +28,14 @@ class Detail extends Component {
     render() {
         return (
             <div className="container">
-                <div>
                     {this.state.dog &&
-                        <div>
+                        <div className="row"> 
                             <DogCarousel images={this.state.dog.images} />
                             <DogDescription
                                 description={this.state.dog.description}
                                 name={this.state.dog.breed} />
                         </div>
                     }
-                </div>
             </div>
         );
     }
