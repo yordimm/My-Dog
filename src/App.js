@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
-import Welcome from './Views/Welcome';
 import Home from './Views/Home';
 import Todos from './Views/Todos';
 import Detail from './Views/Detail';
@@ -24,13 +23,14 @@ class App extends Component {
         <Router>
           <div>
             <NavBar routes={navbarRoutes} />
-            <Switch>
-              <Route exact path="/" component={Welcome} />
-              <Route path="/home" component={Home} location="hash" />
-              <Route path="/todos" component={Todos} location="hash" />
-              <Route path="/detail/:id" component={Detail} location="hash" />
-              <Route component={Home} />
-            </Switch>
+            <div className="container">
+              <Switch>
+                <Route path="/home" component={Home} location="hash" />
+                <Route path="/todos" component={Todos} location="hash" />
+                <Route path="/detail/:id" component={Detail} location="hash" />
+                <Route component={Home} />
+              </Switch>
+            </div>
           </div>
         </Router>
       </Provider>

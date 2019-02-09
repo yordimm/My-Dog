@@ -20,7 +20,7 @@ test('Shows a Card with an image and a name', () => {
 
 describe('Rendered elements', () => {
     test('should show the breed of the dog', () => {
-        const name = instance.find((el) => el.type == 'p')
+        const name = instance.find((el) => el.type == 'h5')
         expect(name.props.children).toEqual(breed)
     });
 
@@ -29,7 +29,7 @@ describe('Rendered elements', () => {
             <DogCard image={image} />,
         );
         const dogInstance = dogCard.root;
-        const name = dogInstance.find((el) => el.type == 'p')
+        const name = dogInstance.find((el) => el.type == 'h5')
         expect(name.props.children).toBe('')
     });
 
